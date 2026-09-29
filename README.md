@@ -57,3 +57,8 @@ npm run preview
 ## 📄 License
 
 MIT.
+
+
+## 🆕 Recent changes
+
+- Assignments are now automatically ordered by due date, with undated tasks shown last.
