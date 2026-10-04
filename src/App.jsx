@@ -11,7 +11,9 @@ export default function App() {
   const [filter,setFilter] = useState("all");
   const [form,setForm] = useState({title:"",subject:"",due:""});
   useEffect(() => localStorage.setItem("study-tasks", JSON.stringify(tasks)), [tasks]);
-  const visible = useMemo(() => tasks\n    .filter(t => filter === "all" || (filter === "done" ? t.done : !t.done))\n    .sort((a,b) => (a.due || "9999-12-31").localeCompare(b.due || "9999-12-31")), [tasks,filter]);
+  const visible = useMemo(() => tasks
+    .filter(t => filter === "all" || (filter === "done" ? t.done : !t.done))
+    .sort((a,b) => (a.due || "9999-12-31").localeCompare(b.due || "9999-12-31")), [tasks,filter]);
   const done = tasks.filter(t => t.done).length;
   const progress = tasks.length ? Math.round(done / tasks.length * 100) : 0;
 
@@ -44,7 +46,7 @@ export default function App() {
           {visible.length === 0 && <p className="empty">Nothing here. Tiny victory unlocked.</p>}
           {visible.map(t => <article className={"task " + (t.done ? "done" : "")} key={t.id}>
             <button className="icon" onClick={()=>setTasks(tasks.map(x=>x.id===t.id?{...x,done:!x.done}:x))}>{t.done?<CheckCircle2/>:<Circle/>}</button>
-            <div><strong>{t.title}</strong><p>{t.subject}{t.due ? " · Due " + t.due : ""}</p></div>
+            <div><strong>{t.title}</strong><p>{t.subject}{t.due ? " · Due " + t.due : ""}{!t.done && t.due && t.due < new Date().toLocaleDateString("en-CA") ? " · ⚠ Overdue" : ""}</p></div>
             <button className="icon" onClick={()=>setTasks(tasks.filter(x=>x.id!==t.id))}><Trash2 size={18}/></button>
           </article>)}
         </div>
