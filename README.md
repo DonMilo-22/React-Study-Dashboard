@@ -61,4 +61,10 @@ MIT.
 
 ## 🆕 Recent changes
 
+### 2026-10-04
+
+- Added an overdue label for pending assignments with a due date earlier than today.
+
+### Previous update
+
 - Assignments are now automatically ordered by due date, with undated tasks shown last.
