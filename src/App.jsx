@@ -41,7 +41,7 @@ export default function App() {
         <button>Add task</button>
       </form>
       <section className="card">
-        <div className="toolbar"><h2>Assignments</h2><div>{["all","pending","done"].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f}</button>)}</div></div>
+        <div className="toolbar"><h2>Assignments</h2><div>{["all","pending","done"].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f}</button>)}{done > 0 && <button onClick={()=>setTasks(tasks.filter(t=>!t.done))}>Clear completed</button>}</div></div>
         <div className="tasks">
           {visible.length === 0 && <p className="empty">Nothing here. Tiny victory unlocked.</p>}
           {visible.map(t => <article className={"task " + (t.done ? "done" : "")} key={t.id}>
