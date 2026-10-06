@@ -61,6 +61,12 @@ MIT.
 
 ## 🆕 Recent changes
 
+### 2026-10-05
+
+- Added a **Clear completed** action to remove all finished assignments at once.
+
+### 2026-10-04
+
 ### 2026-10-04
 
 - Added an overdue label for pending assignments with a due date earlier than today.
