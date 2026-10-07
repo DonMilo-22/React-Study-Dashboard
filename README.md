@@ -61,11 +61,13 @@ MIT.
 
 ## 🆕 Recent changes
 
+### 2026-10-06
+
+- Added live search to filter assignments by title or subject.
+
 ### 2026-10-05
 
 - Added a **Clear completed** action to remove all finished assignments at once.
-
-### 2026-10-04
 
 ### 2026-10-04
 
