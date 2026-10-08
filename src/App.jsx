@@ -18,6 +18,9 @@ export default function App() {
     .sort((a,b) => (a.due || "9999-12-31").localeCompare(b.due || "9999-12-31")), [tasks,filter,query]);
   const done = tasks.filter(t => t.done).length;
   const progress = tasks.length ? Math.round(done / tasks.length * 100) : 0;
+  const today = new Date().toLocaleDateString("en-CA");
+  const nextWeek = new Date(Date.now() + 7 * 86400000).toLocaleDateString("en-CA");
+  const dueSoon = tasks.filter(t => !t.done && t.due && t.due >= today && t.due <= nextWeek).length;
 
   function add(e) {
     e.preventDefault();
@@ -32,6 +35,7 @@ export default function App() {
       <article><strong>{tasks.length}</strong><span>Total tasks</span></article>
       <article><strong>{tasks.length-done}</strong><span>Pending</span></article>
       <article><strong>{progress}%</strong><span>Completed</span></article>
+      <article><strong>{dueSoon}</strong><span>Due in 7 days</span></article>
     </section>
     <div className="progress"><span style={{width: progress + "%"}} /></div>
     <section className="grid">
