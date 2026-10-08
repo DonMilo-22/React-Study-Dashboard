@@ -61,6 +61,10 @@ MIT.
 
 ## 🆕 Recent changes
 
+### 2026-10-07
+
+- Added a dashboard stat for pending assignments due within the next seven days.
+
 ### 2026-10-06
 
 - Added live search to filter assignments by title or subject.
