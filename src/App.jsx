@@ -13,7 +13,7 @@ export default function App() {
   const [form,setForm] = useState({title:"",subject:"",due:""});
   useEffect(() => localStorage.setItem("study-tasks", JSON.stringify(tasks)), [tasks]);
   const visible = useMemo(() => tasks
-    .filter(t => filter === "all" || (filter === "done" ? t.done : !t.done))
+    .filter(t => filter === "all" || (filter === "done" ? t.done : filter === "today" ? (!t.done && t.due === new Date().toLocaleDateString("en-CA")) : !t.done))
     .filter(t => (t.title + " " + t.subject).toLowerCase().includes(query.trim().toLowerCase()))
     .sort((a,b) => (a.due || "9999-12-31").localeCompare(b.due || "9999-12-31")), [tasks,filter,query]);
   const done = tasks.filter(t => t.done).length;
@@ -47,7 +47,7 @@ export default function App() {
         <button>Add task</button>
       </form>
       <section className="card">
-        <div className="toolbar"><h2>Assignments</h2><div>{["all","pending","done"].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f}</button>)}{done > 0 && <button onClick={()=>setTasks(tasks.filter(t=>!t.done))}>Clear completed</button>}</div></div>
+        <div className="toolbar"><h2>Assignments</h2><div>{["all","pending","today","done"].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f}</button>)}{done > 0 && <button onClick={()=>setTasks(tasks.filter(t=>!t.done))}>Clear completed</button>}</div></div>
         <input aria-label="Search assignments" placeholder="Search assignments..." value={query} onChange={e=>setQuery(e.target.value)} />
         <div className="tasks">
           {visible.length === 0 && <p className="empty">Nothing here. Tiny victory unlocked.</p>}
