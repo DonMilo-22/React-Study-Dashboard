@@ -61,6 +61,10 @@ MIT.
 
 ## 🆕 Recent changes
 
+### 2026-10-08
+
+- Added a `today` filter to show only pending assignments due today.
+
 ### 2026-10-07
 
 - Added a dashboard stat for pending assignments due within the next seven days.
