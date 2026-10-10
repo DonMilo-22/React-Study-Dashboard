@@ -61,6 +61,10 @@ MIT.
 
 ## 🆕 Recent changes
 
+### 2026-10-09
+
+- Added an overdue counter to the dashboard statistics.
+
 ### 2026-10-08
 
 - Added a `today` filter to show only pending assignments due today.
