@@ -22,6 +22,7 @@ export default function App() {
   const nextWeek = new Date(Date.now() + 7 * 86400000).toLocaleDateString("en-CA");
   const dueSoon = tasks.filter(t => !t.done && t.due && t.due >= today && t.due <= nextWeek).length;
   const overdue = tasks.filter(t => !t.done && t.due && t.due < today).length;
+  const undated = tasks.filter(t => !t.done && !t.due).length;
 
   function add(e) {
     e.preventDefault();
@@ -38,6 +39,7 @@ export default function App() {
       <article><strong>{progress}%</strong><span>Completed</span></article>
       <article><strong>{dueSoon}</strong><span>Due in 7 days</span></article>
       <article><strong>{overdue}</strong><span>Overdue</span></article>
+      <article><strong>{undated}</strong><span>Undated</span></article>
     </section>
     <div className="progress"><span style={{width: progress + "%"}} /></div>
     <section className="grid">
