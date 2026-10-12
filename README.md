@@ -1,90 +1,63 @@
-# 🎓 React Study Dashboard
+# React Study Dashboard
 
-> A clean local-first dashboard for classes, tasks and study progress.
+Dashboard académico local para tareas, materias y progreso, desarrollado con React y Vite.
 
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
-![LocalStorage](https://img.shields.io/badge/storage-localStorage-orange)
+Funciona sin cuentas ni backend: los datos permanecen en el navegador. Es una alternativa personal y pequeña al enfoque colaborativo de [BaseDeTareas](https://github.com/DonMilo-22/BaseDeTareas).
 
-Study Dashboard is a small React app for keeping academic tasks visible without creating an account or configuring a backend.
+## Vista de la aplicación
 
-## ✨ Features
+![Dashboard ejecutado localmente](docs/dashboard.webp)
 
-- Add assignments with subject and due date
-- Mark work as completed
-- Filter all, pending and completed tasks
-- Progress indicator
-- Persistent browser storage
-- Responsive interface
-- Dark-friendly visual design
+Captura de la aplicación con sus datos de ejemplo.
 
-## 🚀 Quick start
+## Funciones actuales
+
+- Crear tareas con materia y fecha de entrega opcional.
+- Completar y eliminar tareas; limpiar todas las completadas.
+- Filtrar todas, pendientes, completadas y pendientes para hoy.
+- Buscar por título o materia mientras se escribe.
+- Ordenar por entrega, dejando tareas sin fecha al final.
+- Mostrar progreso, entregas en los próximos siete días y tareas vencidas.
+- Persistencia en `localStorage` e interfaz adaptable.
+
+## Requisitos
+
+Node.js 22.12 o superior dentro de la rama 22, o una rama posterior compatible, y npm. Las dependencias de React, Vite y su plugin están declaradas como `latest`: la versión instalada puede variar. Vite 8.3.4 fue la versión resuelta y compilada durante esta revisión; su requisito de Node también admite 20.19 o superior dentro de la rama 20.
+
+## Instalación y uso local
 
 ```bash
+git clone https://github.com/DonMilo-22/React-Study-Dashboard.git
+cd React-Study-Dashboard
 npm install
 npm run dev
 ```
 
-Then open the local address shown by Vite.
+Abre la URL local que imprime Vite. Agrega una tarea, utiliza los filtros y marca su estado desde la lista.
 
-## 🧠 How it works
-
-React manages the task state while `localStorage` keeps your data after refreshing or reopening the browser. The dashboard derives progress and pending counts directly from the task list.
-
-## 🧱 Structure
-
-```text
-src/
-  App.jsx
-  main.jsx
-  styles.css
-index.html
-package.json
-vite.config.js
-```
-
-## 🛠️ Requirements
-
-Node.js 18+ and npm.
-
-## 📦 Production build
+## Compilación y vista previa
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## 📄 License
+El resultado se genera en `dist/`. `npm run preview` sirve esa compilación localmente; no publica una demo en Internet.
 
-MIT.
+## Almacenamiento y límites
 
+La clave `study-tasks` de `localStorage` conserva tareas por origen del navegador. Cambiar navegador, dispositivo o dirección crea un almacenamiento distinto. Borrar los datos del sitio elimina las tareas. No hay sincronización, exportación ni sistema de cuentas. Las fechas se comparan usando la fecha local del dispositivo.
 
-## 🆕 Recent changes
+## Comprobaciones
 
-### 2026-10-09
+`npm run build` comprueba la compilación. Un recorrido manual puede verificar agregar una tarea, filtrar, completar y recargar para observar la persistencia. No hay una suite automatizada declarada en `package.json`.
 
-- Added an overdue counter to the dashboard statistics.
+## Autor y licencia
 
-### 2026-10-08
+Desarrollado por [DonMilo-22](https://github.com/DonMilo-22).
 
-- Added a `today` filter to show only pending assignments due today.
+Licencia: MIT.
 
-### 2026-10-07
+## Historial
 
-- Added a dashboard stat for pending assignments due within the next seven days.
-
-### 2026-10-06
-
-- Added live search to filter assignments by title or subject.
-
-### 2026-10-05
-
-- Added a **Clear completed** action to remove all finished assignments at once.
-
-### 2026-10-04
-
-- Added an overdue label for pending assignments with a due date earlier than today.
-
-### Previous update
-
-- Assignments are now automatically ordered by due date, with undated tasks shown last.
+Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
