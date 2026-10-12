@@ -58,6 +58,10 @@ Desarrollado por [DonMilo-22](https://github.com/DonMilo-22).
 
 Licencia: MIT.
 
+## Actualización 2026-10-12
+
+- Added an `Undated` dashboard counter for pending assignments without a due date.
+
 ## Historial
 
 Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
