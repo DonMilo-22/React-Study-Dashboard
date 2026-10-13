@@ -62,6 +62,10 @@ Licencia: MIT.
 
 - Added an `Undated` dashboard counter for pending assignments without a due date.
 
+## Actualización adicional 2026-10-12
+
+- The progress bar now has a text label showing completed assignments out of the total.
+
 ## Historial
 
 Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
