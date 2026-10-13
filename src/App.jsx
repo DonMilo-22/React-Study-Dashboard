@@ -42,6 +42,7 @@ export default function App() {
       <article><strong>{undated}</strong><span>Undated</span></article>
     </section>
     <div className="progress"><span style={{width: progress + "%"}} /></div>
+    <p className="progress-label">{done} of {tasks.length} assignments completed</p>
     <section className="grid">
       <form onSubmit={add} className="card form">
         <h2><Plus size={18}/> Add assignment</h2>
