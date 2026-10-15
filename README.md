@@ -69,3 +69,7 @@ Licencia: MIT.
 ## Historial
 
 Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
+
+## Actualización 2026-10-14
+
+- Added an `overdue` filter to group unfinished assignments past their due date.
