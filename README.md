@@ -73,3 +73,7 @@ Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
 ## Actualización 2026-10-14
 
 - Added an `overdue` filter to group unfinished assignments past their due date.
+
+## Actualización 2026-10-15
+
+- Added a `week` filter for pending assignments due today through the next seven days.
