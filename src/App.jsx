@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { BookOpen, CheckCircle2, Circle, Plus, Trash2 } from "lucide-react";
+import { BookOpen, CheckCircle2, Circle, Download, Plus, Trash2 } from "lucide-react";
 
 const seed = [
   { id: 1, title: "Review OSI model", subject: "Networks", due: "2026-10-01", done: false },
@@ -23,6 +23,19 @@ export default function App() {
   const dueSoon = tasks.filter(t => !t.done && t.due && t.due >= today && t.due <= nextWeek).length;
   const overdue = tasks.filter(t => !t.done && t.due && t.due < today).length;
   const undated = tasks.filter(t => !t.done && !t.due).length;
+
+  function exportCsv() {
+    const escape = value => `"${String(value ?? "").replace(/"/g, '""')}"`;
+    const csv = ["title,subject,due,done", ...tasks.map(t =>
+      [t.title, t.subject, t.due, t.done ? "yes" : "no"].map(escape).join(",")
+    )].join("\\n");
+    const url = URL.createObjectURL(new Blob([csv], {type:"text/csv;charset=utf-8;"}));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "study-assignments.csv";
+    link.click();
+    URL.revokeObjectURL(url);
+  }
 
   function add(e) {
     e.preventDefault();
@@ -52,7 +65,7 @@ export default function App() {
         <button>Add task</button>
       </form>
       <section className="card">
-        <div className="toolbar"><h2>Assignments</h2><div>{["all","pending","today","week","overdue","done"].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f}</button>)}{done > 0 && <button onClick={()=>setTasks(tasks.filter(t=>!t.done))}>Clear completed</button>}</div></div>
+        <div className="toolbar"><h2>Assignments</h2><div>{["all","pending","today","week","overdue","done"].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f}</button>)}<button onClick={exportCsv}><Download size={14}/> Export CSV</button>{done > 0 && <button onClick={()=>setTasks(tasks.filter(t=>!t.done))}>Clear completed</button>}</div></div>
         <input aria-label="Search assignments" placeholder="Search assignments..." value={query} onChange={e=>setQuery(e.target.value)} />
         <div className="tasks">
           {visible.length === 0 && <p className="empty">Nothing here. Tiny victory unlocked.</p>}
