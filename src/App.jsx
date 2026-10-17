@@ -28,7 +28,7 @@ export default function App() {
     const escape = value => `"${String(value ?? "").replace(/"/g, '""')}"`;
     const csv = ["title,subject,due,done", ...tasks.map(t =>
       [t.title, t.subject, t.due, t.done ? "yes" : "no"].map(escape).join(",")
-    )].join("\\n");
+    )].join("\n");
     const url = URL.createObjectURL(new Blob([csv], {type:"text/csv;charset=utf-8;"}));
     const link = document.createElement("a");
     link.href = url;
