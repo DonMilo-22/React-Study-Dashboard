@@ -77,3 +77,8 @@ Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
 ## Actualización 2026-10-15
 
 - Added a `week` filter for pending assignments due today through the next seven days.
+
+
+## Actualización 2026-10-16
+
+- Added an **Export CSV** action to download assignments with subject, due date, and completion status for use in spreadsheet apps.
