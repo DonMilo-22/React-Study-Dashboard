@@ -1,3 +1,7 @@
+### 2026-10-18
+
+- Added an in-dashboard 25-minute focus timer with start, pause and reset controls.
+
 # Historial de cambios
 
 Entradas originales conservadas en inglés. Las fechas corresponden al historial existente; la última entrada no tenía fecha registrada.
