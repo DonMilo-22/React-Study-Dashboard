@@ -82,3 +82,8 @@ Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
 ## Actualización 2026-10-16
 
 - Added an **Export CSV** action to download assignments with subject, due date, and completion status for use in spreadsheet apps.
+
+
+## New feature: focus timer
+
+The dashboard now includes a lightweight 25-minute focus session timer with start, pause, and reset controls. It runs locally in the browser and does not require an account or backend.
