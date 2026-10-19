@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { BookOpen, CheckCircle2, Circle, Download, Plus, Trash2 } from "lucide-react";
+import { BookOpen, CheckCircle2, Circle, Download, Plus, Timer, Trash2 } from "lucide-react";
 
 const seed = [
   { id: 1, title: "Review OSI model", subject: "Networks", due: "2026-10-01", done: false },
@@ -11,7 +11,15 @@ export default function App() {
   const [filter,setFilter] = useState("all");
   const [query,setQuery] = useState("");
   const [form,setForm] = useState({title:"",subject:"",due:""});
+  const [focusSeconds,setFocusSeconds] = useState(25 * 60);
+  const [timerRunning,setTimerRunning] = useState(false);
   useEffect(() => localStorage.setItem("study-tasks", JSON.stringify(tasks)), [tasks]);
+  useEffect(() => {
+    if (!timerRunning) return;
+    const interval = window.setInterval(() => setFocusSeconds(seconds => Math.max(0, seconds - 1)), 1000);
+    return () => window.clearInterval(interval);
+  }, [timerRunning]);
+  useEffect(() => { if (focusSeconds === 0) setTimerRunning(false); }, [focusSeconds]);
   const visible = useMemo(() => tasks
     .filter(t => filter === "all" || (filter === "done" ? t.done : filter === "today" ? (!t.done && t.due === new Date().toLocaleDateString("en-CA")) : filter === "week" ? (!t.done && t.due && t.due >= new Date().toLocaleDateString("en-CA") && t.due <= new Date(Date.now() + 7 * 86400000).toLocaleDateString("en-CA")) : filter === "overdue" ? (!t.done && t.due && t.due < new Date().toLocaleDateString("en-CA")) : !t.done))
     .filter(t => (t.title + " " + t.subject).toLowerCase().includes(query.trim().toLowerCase()))
@@ -23,6 +31,7 @@ export default function App() {
   const dueSoon = tasks.filter(t => !t.done && t.due && t.due >= today && t.due <= nextWeek).length;
   const overdue = tasks.filter(t => !t.done && t.due && t.due < today).length;
   const undated = tasks.filter(t => !t.done && !t.due).length;
+  const timerDisplay = `${String(Math.floor(focusSeconds / 60)).padStart(2, "0")}:${String(focusSeconds % 60).padStart(2, "0")}`;
 
   function exportCsv() {
     const escape = value => `"${String(value ?? "").replace(/"/g, '""')}"`;
@@ -56,6 +65,16 @@ export default function App() {
     </section>
     <div className="progress"><span style={{width: progress + "%"}} /></div>
     <p className="progress-label">{done} of {tasks.length} assignments completed</p>
+    <section className="card focus-timer" aria-label="Focus timer">
+      <h2><Timer size={18}/> Focus session</h2>
+      <p className="timer-display" role="timer" aria-live="polite">{timerDisplay}</p>
+      <p>Work in a short, distraction-free block.</p>
+      <div className="timer-actions">
+        <button onClick={() => { if (focusSeconds === 0) setFocusSeconds(25 * 60); setTimerRunning(true); }} disabled={timerRunning}>Start 25 min</button>
+        <button onClick={() => setTimerRunning(false)} disabled={!timerRunning}>Pause</button>
+        <button onClick={() => { setTimerRunning(false); setFocusSeconds(25 * 60); }}>Reset</button>
+      </div>
+    </section>
     <section className="grid">
       <form onSubmit={add} className="card form">
         <h2><Plus size={18}/> Add assignment</h2>
