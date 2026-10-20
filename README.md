@@ -87,3 +87,8 @@ Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
 ## New feature: focus timer
 
 The dashboard now includes a lightweight 25-minute focus session timer with start, pause, and reset controls. It runs locally in the browser and does not require an account or backend.
+
+
+## New utility: reusable task statistics
+
+The new `src/utils/taskStats.js` helper calculates total, completed, pending and overdue task counts plus the completion percentage. Import `getTaskStats(tasks)` wherever a summary card or progress indicator is needed.
