@@ -1,3 +1,8 @@
+
+
+### 2026-10-19
+
+- Added reusable `getTaskStats` helper for dashboard task totals, overdue counts and completion percentage.
 ### 2026-10-18
 
 - Added an in-dashboard 25-minute focus timer with start, pause and reset controls.
