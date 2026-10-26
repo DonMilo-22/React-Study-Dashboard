@@ -84,7 +84,7 @@ export default function App() {
         <button>Add task</button>
       </form>
       <section className="card">
-        <div className="toolbar"><h2>Assignments</h2><div>{["all","pending","today","week","overdue","done"].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f}</button>)}<button onClick={exportCsv}><Download size={14}/> Export CSV</button>{done > 0 && <button onClick={()=>setTasks(tasks.filter(t=>!t.done))}>Clear completed</button>}</div></div>
+        <div className="toolbar"><h2>Assignments</h2><div>{["all","pending","today","week","overdue","done"].map(f=><button className={filter===f?"active":""} onClick={()=>setFilter(f)} key={f}>{f}</button>)}<button onClick={exportCsv}><Download size={14}/> Export CSV</button>{done > 0 && <button onClick={()=>{if(window.confirm("Delete all completed assignments?")) setTasks(tasks.filter(t=>!t.done));}}>Clear completed</button>}</div></div>
         <input aria-label="Search assignments" placeholder="Search assignments..." value={query} onChange={e=>setQuery(e.target.value)} />
         <div className="tasks">
           {visible.length === 0 && <p className="empty">Nothing here. Tiny victory unlocked.</p>}
