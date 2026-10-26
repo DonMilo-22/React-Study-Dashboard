@@ -92,3 +92,8 @@ The dashboard now includes a lightweight 25-minute focus session timer with star
 ## New utility: reusable task statistics
 
 The new `src/utils/taskStats.js` helper calculates total, completed, pending and overdue task counts plus the completion percentage. Import `getTaskStats(tasks)` wherever a summary card or progress indicator is needed.
+
+
+## Actualización 2026-10-25
+
+- Added a confirmation prompt before clearing completed assignments, helping prevent accidental deletion while keeping the existing action unchanged.
