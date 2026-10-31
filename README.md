@@ -97,3 +97,7 @@ The new `src/utils/taskStats.js` helper calculates total, completed, pending and
 ## Actualización 2026-10-25
 
 - Added a confirmation prompt before clearing completed assignments, helping prevent accidental deletion while keeping the existing action unchanged.
+
+## Actualización 2026-10-30
+
+- Added a `+5 min` button to extend the focus timer by five minutes without resetting the current session.
