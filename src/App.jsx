@@ -71,7 +71,7 @@ export default function App() {
       <p>Work in a short, distraction-free block.</p>
       <div className="timer-actions">
         <button onClick={() => { if (focusSeconds === 0) setFocusSeconds(25 * 60); setTimerRunning(true); }} disabled={timerRunning}>Start 25 min</button>
-        <button onClick={() => setTimerRunning(false)} disabled={!timerRunning}>Pause</button>
+        <button onClick={() => setFocusSeconds(seconds => seconds + 5 * 60)}>+5 min</button>\n        <button onClick={() => setTimerRunning(false)} disabled={!timerRunning}>Pause</button>
         <button onClick={() => { setTimerRunning(false); setFocusSeconds(25 * 60); }}>Reset</button>
       </div>
     </section>
