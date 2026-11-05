@@ -105,3 +105,7 @@ The new `src/utils/taskStats.js` helper calculates total, completed, pending and
 ## Actualización 2026-11-02
 
 - Added the `undated` filter to show pending assignments that do not have a due date.
+
+## Actualización 2026-11-04
+
+- Added a `tomorrow` assignment filter to quickly view pending work due the next calendar day.
